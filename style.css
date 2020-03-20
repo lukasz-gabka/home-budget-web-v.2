@@ -1,0 +1,29 @@
+body
+{
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+.navigation
+{
+	background-color: #009b44;
+	color: white;
+	font-size: 22px;
+}
+
+.navbar-brand
+{
+	font-family: 'Titan One', cursive;
+	font-size: 35px;
+	font-weight: 700;
+}
+
+a span
+{
+	color: #ccc616;
+}
+
+a p
+{
+	display: inline-block;
+	margin: 0;
+}
