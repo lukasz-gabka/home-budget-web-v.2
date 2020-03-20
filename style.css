@@ -1,6 +1,7 @@
 body
 {
 	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 18px;
 }
 
 .navigation
@@ -17,7 +18,7 @@ body
 	font-weight: 700;
 }
 
-a span
+.yellow
 {
 	color: #ccc616;
 }
