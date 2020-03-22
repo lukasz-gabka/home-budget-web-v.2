@@ -41,6 +41,38 @@ a p
 	margin: 0;
 }
 
+.inputs,
+.inputsPrepend
+{
+	max-width: 400px;
+	color: #124D09;
+	box-sizing: border-box;
+	border: 1px solid #009b44;
+	border-radius: 5px;
+}
+
+.inputsPrepend
+{
+	background-color: #009b44;
+	color: white;
+}
+
+input[type=submit],
+input[type=submit]:focus
+{
+	background-color: #009b44;
+	color: white;
+	max-width: 436px;
+}
+
+.inputs:focus
+{
+	border: 1px solid #009b44;
+	-webkit-box-shadow: 0px 0px 8px 0px rgba(18,77,9,0.85);
+	-moz-box-shadow: 0px 0px 8px 0px rgba(18,77,9,0.85);
+	box-shadow: 0px 0px 8px 0px rgba(18,77,9,0.85);
+}
+
 .footer 
 {
   position: absolute;
