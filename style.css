@@ -25,6 +25,12 @@ body
 	font-weight: 700;
 }
 
+.loogedUser
+{
+	opacity: .75;
+	cursor: default;
+}
+
 .row
 {
 	padding-bottom: 92px;
