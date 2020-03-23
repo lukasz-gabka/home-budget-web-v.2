@@ -30,7 +30,7 @@
 			
 			<div class="collapse navbar-collapse" id="menu">
 				<div class="navbar-nav ml-auto">
-					<span class="nav-item my-auto mr-3 loogedUser">Zalogowany użytkownik: user</span>
+					<span class="nav-item my-auto mr-3 loogedUser">Zalogowany użytkownik: <span class="font-weight-bold yellow">user</span></span>
 					<a class="nav-item nav-link" href="#">Wyloguj się</a>
 				</div>
 			</div>
@@ -44,11 +44,84 @@
 					</header>
 					
 					<div class="container">
-						
+						<form method="post" enctype="application/x-www-form-urlencoded">
+							<div class="row mt-5">
+								<div class="col-12">
+									<div class="input-group justify-content-center mb-5">
+										<div class="input-group-prepend">
+											<span class="input-group-text inputsPrepend">K</span>
+										</div>
+										
+										<input type="number" class="form-control inputs" placeholder="Kwota wydatku" step="0.01" min="0.01" required>
+									</div>
+									
+									<div class="input-group justify-content-center mb-5">
+										<div class="input-group-prepend">
+											<span class="input-group-text inputsPrepend">D</span>
+										</div>
+										
+										<input placeholder="Data(kliknij, aby ustawić)" class="textbox-n form-control inputs" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date" required>
+									</div>
+									
+									<div class="input-group justify-content-center mb-5">
+										<div class="input-group-prepend">
+											<label class="input-group-text inputsPrepend" for="paymentOptions">H</label>
+										</div>
+										
+										<select class="custom-select inputs" id="paymentOptions" required>
+											<option selected disabled>Wybierz sposób płatności</option>
+											<option>Gotówka</option>
+											<option>Przelew</option>
+											<option>Karta kredytowa</option>
+											<option>Karta debetowa</option>
+										</select>
+									</div>
+								
+									<div class="input-group justify-content-center mb-5">
+										<div class="input-group-prepend">
+											<label class="input-group-text inputsPrepend" for="category">K</label>
+										</div>
+										
+										<select class="custom-select inputs" id="category" required>
+											<option class="text-secondary" selected disabled>Wybierz kategorię wydatku</option>
+											<option>Jedzenie</option>
+											<option>Mieszkanie</option>
+											<option>Transport</option>
+											<option>Telekomunikacja</option>
+											<option>Opieka zdrowotna</option>
+											<option>Ubranie</option>
+											<option>Higiena</option>
+											<option>Dzieci</option>
+											<option>Rozrywka</option>
+											<option>Wycieczka</option>
+											<option>Szkolenia</option>
+											<option>Książki</option>
+											<option>Oszczędności</option>
+											<option>Na złotą jesień, czyli emeryturę</option>
+											<option>Spłata długów</option>
+											<option>Darowizna</option>
+											<option>Inne wydatki</option>
+										</select>
+									</div>
+									
+									<div class="input-group justify-content-center mb-5">
+										<div class="input-group-prepend">
+											<span class="input-group-text inputsPrepend">C</span>
+										</div>
+										
+										<textarea class="form-control inputs" placeholder="Komentarz(opcjonalnie)"></textarea>
+									</div>
+									
+									<div class="d-flex justify-content-center mb-5 d-inline-block">	
+										<input type="submit" class="btn form-control inputs submitButtons mr-5" value="Dodaj">
+										
+										<input type="reset" class="btn form-control inputs submitButtons bg-danger ml-5" style="border:none;" value="Wyczyść pola">
+									</div>
+								</div>
+							</div>
+						</form>
 					</div>
-					
-				</article>
-				
+				</article>		
 			</div>
 		</main>
 		
