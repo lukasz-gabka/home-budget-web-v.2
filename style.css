@@ -18,11 +18,30 @@ body
 	text-align: center;
 }
 
+.navigation2
+{
+	background-color: #00ac55;
+	font-size: 20px;
+	text-align: center;
+}
+
+.navbar-nav a
+{
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
 .navbar-brand
 {
 	font-family: 'Titan One', cursive;
 	font-size: 35px;
 	font-weight: 700;
+}
+
+.loogedUser
+{
+	opacity: .75;
+	cursor: default;
 }
 
 .row
@@ -51,6 +70,11 @@ a p
 	border-radius: 5px;
 }
 
+.maxWidth
+{
+	max-width: 436px;
+}
+
 .inputsPrepend
 {
 	background-color: #009b44;
@@ -58,6 +82,8 @@ a p
 }
 
 input[type=submit],
+input[type=button],
+input[type=reset],
 input[type=submit]:focus
 {
 	background-color: #009b44;
@@ -71,6 +97,17 @@ input[type=submit]:focus
 	-webkit-box-shadow: 0px 0px 8px 0px rgba(18,77,9,0.85);
 	-moz-box-shadow: 0px 0px 8px 0px rgba(18,77,9,0.85);
 	box-shadow: 0px 0px 8px 0px rgba(18,77,9,0.85);
+}
+
+textarea
+{
+	height: 38px !important;
+	resize: none;
+}
+
+.submitButtons
+{
+	max-width: 150px !important;
 }
 
 .footer 
