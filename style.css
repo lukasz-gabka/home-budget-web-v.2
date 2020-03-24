@@ -18,6 +18,19 @@ body
 	text-align: center;
 }
 
+.navigation2
+{
+	background-color: #00ac55;
+	font-size: 20px;
+	text-align: center;
+}
+
+.navbar-nav a
+{
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
 .navbar-brand
 {
 	font-family: 'Titan One', cursive;

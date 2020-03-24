@@ -17,7 +17,7 @@
 	
 	<body>
 		
-		<nav class="navbar navbar-dark navbar-expand-sm navigation">
+		<nav class="navbar navbar-dark navbar-expand-md navigation pb-0">
 			<header>
 				<a class="navbar-brand mr-5" href="#">
 					<img src="img/piggy.png" height="60" alt="logo"><p class="align-middle"><span class="yellow">e</span>-świnka</p>
@@ -32,6 +32,17 @@
 				<div class="navbar-nav ml-auto">
 					<span class="nav-item my-auto mr-3 loogedUser">Zalogowany użytkownik: <span class="font-weight-bold yellow">user</span></span>
 					<a class="nav-item nav-link" href="#">Wyloguj się</a>
+				</div>
+			</div>
+		</nav>
+		
+		<nav class="navbar navbar-dark navbar-expand-md navigation2 py-0 py-md-2">	
+			<div class="collapse navbar-collapse" id="menu">
+				<div class="navbar-nav mx-auto">
+					<a class="nav-item nav-link mx-3" href="#">Dodaj przychód</a>
+					<a class="nav-item nav-link mx-3 active disabled" href="#">Dodaj wydatek</a>
+					<a class="nav-item nav-link mx-3" href="#">Bilans</a>
+					<a class="nav-item nav-link mx-3" href="#">Ustawienia</a>
 				</div>
 			</div>
 		</nav>
@@ -109,7 +120,7 @@
 											<span class="input-group-text inputsPrepend">C</span>
 										</div>
 										
-										<textarea class="form-control inputs" placeholder="Komentarz(opcjonalnie)"></textarea>
+										<textarea class="form-control inputs" maxlength="40" placeholder="Komentarz(opcjonalnie)"></textarea>
 									</div>
 									
 									<div class="d-flex justify-content-center mb-5 d-inline-block">	
