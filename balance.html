@@ -68,18 +68,57 @@
 											<option>Bieżący miesiąc</option>
 											<option>Poprzedni miesiąc</option>
 											<option>Bieżący rok</option>
-											<option>Niestandardowy</option>
+											<option data-toggle="modal" data-target="#customBalance">Niestandardowy</option>
 										</select>
 									</div>
 									
 									<div class="d-flex justify-content-center mb-5 d-inline-block">	
-										<input type="submit" class="btn form-control inputs submitButtons mr-5" value="Wyświetl bilans">
-										
-										<input type="reset" class="btn form-control inputs submitButtons bg-danger ml-5" style="border:none;" value="Wyczyść pola">
+										<input type="submit" class="btn form-control inputs" value="Wyświetl bilans">
 									</div>
 								</div>
 							</div>
 						</form>
+						
+						<div class="modal" id="customBalance" tabindex="-1" role="dialog">
+							<div class="modal-dialog modal-dialog-centered" role="document">
+								<div class="modal-content">
+									<div class="modal-header navigation">
+										<h2>Ustaw zakres bilansu</h2>
+										
+										<button type="button" class="close" data-dismiss="modal" aria-label="Zamknij">
+											<span aria-hidden="true">x</span>
+										</button>
+									</div>
+									
+									<form method="post" enctype="application/x-www-form-urlencoded">
+										<div class="modal-body">
+											
+												<div class="input-group justify-content-center my-5">
+													<div class="input-group-prepend">
+														<span class="input-group-text inputsPrepend">D</span>
+													</div>
+													
+													<input placeholder="Data początkowa(kliknij, aby ustawić)" class="textbox-n form-control inputs" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date" required>
+												</div>
+												
+												<div class="input-group justify-content-center mb-5">
+													<div class="input-group-prepend">
+														<span class="input-group-text inputsPrepend">D</span>
+													</div>
+													
+													<input placeholder="Data końcowa(kliknij, aby ustawić)" class="textbox-n form-control inputs" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date" required>
+												</div>
+										</div>
+										
+										<div class="modal-footer">
+											<input type="submit" class="btn form-control inputs submitButtons" value="Wyświetl bilans">
+										
+											<input type="reset" class="btn form-control inputs submitButtons bg-danger" style="border:none;" value="Wyczyść pola">
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
 					</div>
 				</article>		
 			</div>

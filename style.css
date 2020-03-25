@@ -110,6 +110,18 @@ textarea
 	max-width: 150px !important;
 }
 
+.close
+{
+	text-shadow: none;
+	color: white;
+}
+
+.close:hover
+{
+	opacity: .75;
+	color: inherit;
+}
+
 .footer 
 {
   position: absolute;
