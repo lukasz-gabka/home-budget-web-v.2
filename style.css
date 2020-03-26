@@ -38,12 +38,6 @@ body
 	font-weight: 700;
 }
 
-.loogedUser
-{
-	opacity: .75;
-	cursor: default;
-}
-
 .row
 {
 	padding-bottom: 92px;
@@ -68,6 +62,7 @@ a p
 	box-sizing: border-box;
 	border: 1px solid #009b44;
 	border-radius: 5px;
+	background-color: #e8ead6;
 }
 
 .maxWidth
@@ -89,6 +84,16 @@ input[type=submit]:focus
 	background-color: #009b44;
 	color: white;
 	max-width: 436px;
+}
+
+input[type=text]:focus,
+input[type=password]:focus,
+input[type=email]:focus,
+input[type=date]:focus,
+input[type=number]:focus,
+textarea:focus
+{
+	background-color: #e8ead6 !important;
 }
 
 .inputs:focus

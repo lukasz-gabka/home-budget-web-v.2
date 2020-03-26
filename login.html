@@ -10,16 +10,17 @@
 		
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 		<link rel="stylesheet" href="style.css"/>
+		<link rel="stylesheet" href="css/fontello.css" type="text/css"/>
 		
 		<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700%7CTitan+One&display=swap&subset=latin-ext" rel="stylesheet">		
-		<title>e-świnka</title>
+		<title>e-świnka - logowanie</title>
 	</head>
 	
 	<body>
 		
 		<nav class="navbar navbar-dark navbar-expand-sm navigation">
 			<header>
-				<a class="navbar-brand mr-5" href="#">
+				<a class="navbar-brand mr-5" href="main.html">
 					<img src="img/piggy.png" height="60" alt="logo"><p class="align-middle"><span class="yellow">e</span>-świnka</p>
 				</a>
 			</header>
@@ -30,8 +31,13 @@
 			
 			<div class="collapse navbar-collapse" id="menu">
 				<div class="navbar-nav ml-auto">
-					<a class="nav-item nav-link active disabled" href="#">Logowanie</a>
-					<a class="nav-item nav-link" href="#">Rejestracja</a>
+					<a class="nav-item nav-link active disabled" href="login.html">
+						<i class="icon-login"></i> Logowanie
+					</a>
+					
+					<a class="nav-item nav-link" href="register.html">
+						<i class="icon-user-plus"></i> Rejestracja
+					</a>
 				</div>
 			</div>
 		</nav>
@@ -49,7 +55,9 @@
 								<div class="col-12">
 									<div class="input-group justify-content-center mb-5">
 										<div class="input-group-prepend">
-											<span class="input-group-text inputsPrepend">L</span>
+											<span class="input-group-text inputsPrepend">
+												<i class="icon-mail-alt"></i>
+											</span>
 										</div>
 										
 										<input type="email" class="form-control inputs" placeholder="e-mail" required>
@@ -57,14 +65,16 @@
 									
 									<div class="input-group justify-content-center mb-5">
 										<div class="input-group-prepend">
-											<span class="input-group-text inputsPrepend">H</span>
+											<span class="input-group-text inputsPrepend">
+												<i class="icon-lock"></i>
+											</span>
 										</div>
 										
 										<input type="password" class="form-control inputs" placeholder="Hasło" required>
 									</div>
 									
 									<div class="input-group justify-content-center mb-5">	
-										<input type="submit" class="form-control inputs" value="Zaloguj się">
+										<input type="submit" class="btn form-control inputs submitButtons" value="Zaloguj się">
 									</div>
 								</div>
 							</div>

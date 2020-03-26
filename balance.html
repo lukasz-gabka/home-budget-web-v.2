@@ -10,39 +10,51 @@
 		
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 		<link rel="stylesheet" href="style.css"/>
+		<link rel="stylesheet" href="css/fontello.css" type="text/css"/>
 		
 		<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700%7CTitan+One&display=swap&subset=latin-ext" rel="stylesheet">		
-		<title>e-świnka</title>
+		<title>e-świnka - bilans</title>
 	</head>
 	
 	<body>
 		
 		<nav class="navbar navbar-dark navbar-expand-md navigation pb-0">
 			<header>
-				<a class="navbar-brand mr-5" href="#">
+				<a class="navbar-brand mr-5" href="main.html">
 					<img src="img/piggy.png" height="60" alt="logo"><p class="align-middle"><span class="yellow">e</span>-świnka</p>
 				</a>
 			</header>
 			
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu" aria-expanded="false" aria-label="Przełącznik nawigacji">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".menu" aria-expanded="false" aria-label="Przełącznik nawigacji">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			
-			<div class="collapse navbar-collapse" id="menu">
+			<div class="collapse navbar-collapse menu">
 				<div class="navbar-nav ml-auto">
 					<span class="nav-item my-auto mr-3 loogedUser">Zalogowany użytkownik: <span class="font-weight-bold yellow">user</span></span>
-					<a class="nav-item nav-link" href="#">Wyloguj się</a>
+					
+					<a class="nav-item nav-link" href="main.html">
+						<i class="icon-logout"></i> Wyloguj
+					</a>
 				</div>
 			</div>
 		</nav>
 		
 		<nav class="navbar navbar-dark navbar-expand-md navigation2 py-0 py-md-2">	
-			<div class="collapse navbar-collapse" id="menu">
+			<div class="collapse navbar-collapse menu">
 				<div class="navbar-nav mx-auto">
-					<a class="nav-item nav-link mx-3" href="#">Dodaj przychód</a>
-					<a class="nav-item nav-link mx-3" href="#">Dodaj wydatek</a>
-					<a class="nav-item nav-link mx-3 active disabled" href="#">Bilans</a>
-					<a class="nav-item nav-link mx-3" href="#">Ustawienia</a>
+					<a class="nav-item nav-link mx-3" href="income.html">
+						<i class="icon-up-big"></i> Dodaj przychód
+					</a>
+					<a class="nav-item nav-link mx-3" href="expense.html">
+						<i class="icon-down-big"></i> Dodaj wydatek
+					</a>
+					<a class="nav-item nav-link mx-3 active disabled" href="balance.html">
+						<i class="icon-chart-bar"></i> Bilans
+					</a>
+					<a class="nav-item nav-link mx-3" href="#">
+						<i class="icon-cog"></i> Ustawienia
+					</a>
 				</div>
 			</div>
 		</nav>
@@ -60,11 +72,13 @@
 								<div class="col-12">
 									<div class="input-group justify-content-center mb-5">
 										<div class="input-group-prepend">
-											<label class="input-group-text inputsPrepend" for="paymentOptions">H</label>
+											<label class="input-group-text inputsPrepend" for="paymentOptions">
+												<i class="icon-calendar"></i>
+											</label>
 										</div>
 										
 										<select class="custom-select inputs" id="paymentOptions" required>
-											<option selected disabled>Wybierz zakres bilansu</option>
+											<option selected disabled value="">Wybierz zakres bilansu</option>
 											<option>Bieżący miesiąc</option>
 											<option>Poprzedni miesiąc</option>
 											<option>Bieżący rok</option>
@@ -73,7 +87,7 @@
 									</div>
 									
 									<div class="d-flex justify-content-center mb-5 d-inline-block">	
-										<input type="submit" class="btn form-control inputs" value="Wyświetl bilans">
+										<input type="submit" class="btn form-control inputs submitButtons" value="Wyświetl bilans">
 									</div>
 								</div>
 							</div>
@@ -95,25 +109,29 @@
 											
 												<div class="input-group justify-content-center my-5">
 													<div class="input-group-prepend">
-														<span class="input-group-text inputsPrepend">D</span>
+														<span class="input-group-text inputsPrepend">
+															<i class="icon-calendar"></i>
+														</span>
 													</div>
 													
-													<input placeholder="Data początkowa(kliknij, aby ustawić)" class="textbox-n form-control inputs" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date" required>
+													<input placeholder="Data początkowa(kliknij, aby ustawić)" class="textbox-n form-control inputs" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date1" required>
 												</div>
 												
 												<div class="input-group justify-content-center mb-5">
 													<div class="input-group-prepend">
-														<span class="input-group-text inputsPrepend">D</span>
+														<span class="input-group-text inputsPrepend">
+															<i class="icon-calendar"></i>
+														</span>
 													</div>
 													
-													<input placeholder="Data końcowa(kliknij, aby ustawić)" class="textbox-n form-control inputs" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date" required>
+													<input placeholder="Data końcowa(kliknij, aby ustawić)" class="textbox-n form-control inputs" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date2" required>
 												</div>
 										</div>
 										
 										<div class="modal-footer">
 											<input type="submit" class="btn form-control inputs submitButtons" value="Wyświetl bilans">
 										
-											<input type="reset" class="btn form-control inputs submitButtons bg-danger" style="border:none;" value="Wyczyść pola">
+											<input type="reset" class="btn form-control inputs submitButtons bg-danger" style="border:none;" value="Wyczyść">
 										</div>
 									</form>
 								</div>
