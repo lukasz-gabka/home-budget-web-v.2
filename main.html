@@ -18,25 +18,42 @@
 	
 	<body>
 		
-		<nav class="navbar navbar-dark navbar-expand-sm navigation">
+		<nav class="navbar navbar-dark navbar-expand-md navigation pb-0">
 			<header>
-				<a class="navbar-brand mr-5" href="main.html">
+				<a class="navbar-brand mr-5" href="index.html">
 					<img src="img/piggy.png" height="60" alt="logo"><p class="align-middle"><span class="yellow">e</span>-świnka</p>
 				</a>
 			</header>
 			
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu" aria-expanded="false" aria-label="Przełącznik nawigacji">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".menu" aria-expanded="false" aria-label="Przełącznik nawigacji">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			
-			<div class="collapse navbar-collapse" id="menu">
+			<div class="collapse navbar-collapse menu">
 				<div class="navbar-nav ml-auto">
-					<a class="nav-item nav-link" href="login.html">
-						<i class="icon-login"></i> Logowanie
-					</a>
+					<span class="nav-item my-auto mr-3 loogedUser">Zalogowany użytkownik: <span class="font-weight-bold yellow">user</span></span>
 					
-					<a class="nav-item nav-link" href="register.html">
-						<i class="icon-user-plus"></i> Rejestracja
+					<a class="nav-item nav-link" href="main.html">
+						<i class="icon-logout"></i> Wyloguj
+					</a>
+				</div>
+			</div>
+		</nav>
+		
+		<nav class="navbar navbar-dark navbar-expand-md navigation2 py-0 py-md-2">	
+			<div class="collapse navbar-collapse menu">
+				<div class="navbar-nav mx-auto">
+					<a class="nav-item nav-link mx-3" href="income.html">
+						<i class="icon-up-big"></i> Dodaj przychód
+					</a>
+					<a class="nav-item nav-link mx-3" href="expense.html">
+						<i class="icon-down-big"></i> Dodaj wydatek
+					</a>
+					<a class="nav-item nav-link mx-3" href="balance.html">
+						<i class="icon-chart-bar"></i> Bilans
+					</a>
+					<a class="nav-item nav-link mx-3" href="#">
+						<i class="icon-cog"></i> Ustawienia
 					</a>
 				</div>
 			</div>
@@ -46,22 +63,21 @@
 			<div class="container mt-5">
 				<article>
 					<header>
-						<h1 class="text-center">Witaj na <span class="font-weight-bold"><span class="yellow">e</span>-świnka</span>!</h1>
+						<h1 class="text-center">Witaj user</h1>
 					</header>
 					
 					<div class="row mt-5">
 						<div class="col-md-4 mb-4 my-auto">
-							<img src="img/piggy2.jpg" class="img-fluid" alt="piggy">
+							<img src="img/piggy3.jpg" class="img-fluid" alt="piggy">
 						</div>
 					
 						<div class="col-md-8">
-							<p class="lead text-center"><span class="font-weight-bold"><span class="yellow">e</span>-świnka</span> to aplikacja do zarządzania budżetem domowym.</p>
 						
-							<p class="text-justify">Dodawaj na bieżąco wszystkie swoje operacje pieniężne, a dzięki opcji ich wizualizacji szybko zorientujesz się, gdzie należy obnizyć swoje wydatki. Zdziwisz się, jak taka z pozoru prosta aplikacja pomoże Ci zaoszczędzić Twoje pieniądze.</p>
+							<p class="text-center">Minęło <strong>x</strong> dni od Twojej ostatniej wizyty</p>
 							
-							<p class="text-justify"><span class="font-weight-bold"><span class="yellow">e</span>-świnka</span> to Twoja prywatna elektroniczna skarbonka do oszczędzania pieniędzy i zarządzania budżetem domowym.</p>
+							<p class="text-center">Jak tam Twoje finanse?</p>
 							
-							<p class="lead text-center">Zarejestruj się i zacznij oszczędzać już dziś!</p>
+							<p class="text-center">Wybierz opcję z menu powyżej</p>
 						</div>
 						
 					</div>
