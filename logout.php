@@ -1,10 +1,12 @@
 <?php
 	session_start();
 	
-	if (!$_SESSION['loggedUserId']){
+	if (!isset($_SESSION['loggedUserId'])){
 		header('Location: index.php');
 		exit();
 	}
+	if (isset($_SESSION['loggedUserId'])) unset($_SESSION['loggedUserId']);
+	if (isset($_SESSION['loggedUserName'])) unset($_SESSION['loggedUserName']);
 ?>
 
 <!DOCTYPE html>
@@ -27,45 +29,25 @@
 	
 	<body>
 		
-		<nav class="navbar navbar-dark navbar-expand-md navigation pb-0">
+		<nav class="navbar navbar-dark navbar-expand-sm navigation">
 			<header>
-				<a class="navbar-brand mr-5" href="main.php">
+				<a class="navbar-brand mr-5" href="index.php">
 					<img src="img/piggy.png" height="60" alt="logo"><p class="align-middle"><span class="yellow">e</span>-świnka</p>
 				</a>
 			</header>
 			
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".menu" aria-expanded="false" aria-label="Przełącznik nawigacji">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu" aria-expanded="false" aria-label="Przełącznik nawigacji">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			
-			<div class="collapse navbar-collapse menu">
+			<div class="collapse navbar-collapse" id="menu">
 				<div class="navbar-nav ml-auto">
-					<span class="nav-item my-auto mr-3 loogedUser">Zalogowany użytkownik: 
-						<span class="font-weight-bold yellow"><?php echo $_SESSION['LoggedUserName']; ?>
-						</span>
-					</span>
+					<a class="nav-item nav-link" href="login.php">
+						<i class="icon-login"></i> Logowanie
+					</a>
 					
-					<a class="nav-item nav-link" href="logout.php">
-						<i class="icon-logout"></i> Wyloguj
-					</a>
-				</div>
-			</div>
-		</nav>
-		
-		<nav class="navbar navbar-dark navbar-expand-md navigation2 py-0 py-md-2">	
-			<div class="collapse navbar-collapse menu">
-				<div class="navbar-nav mx-auto">
-					<a class="nav-item nav-link mx-3" href="income.php">
-						<i class="icon-up-big"></i> Dodaj przychód
-					</a>
-					<a class="nav-item nav-link mx-3" href="expense.php">
-						<i class="icon-down-big"></i> Dodaj wydatek
-					</a>
-					<a class="nav-item nav-link mx-3" href="balance.php">
-						<i class="icon-chart-bar"></i> Bilans
-					</a>
-					<a class="nav-item nav-link mx-3" href="#">
-						<i class="icon-cog"></i> Ustawienia
+					<a class="nav-item nav-link" href="register.php">
+						<i class="icon-user-plus"></i> Rejestracja
 					</a>
 				</div>
 			</div>
@@ -75,26 +57,19 @@
 			<div class="container mt-5">
 				<article>
 					<header>
-						<h1 class="text-center">Witaj <?php echo $_SESSION['LoggedUserName']; ?></h1>
+						<h1 class="text-center">Wylogowano</h1>
 					</header>
 					
 					<div class="row mt-5">
 						<div class="col-md-4 mb-4 my-auto">
-							<img src="img/piggy3.jpg" class="img-fluid" alt="piggy">
+							<img src="img/piggy5.png" class="img-fluid" alt="piggy">
 						</div>
 					
 						<div class="col-md-8">
-						
-							<p class="text-center">Minęło <strong>x</strong> dni od Twojej ostatniej wizyty</p>
-							
-							<p class="text-center">Jak tam Twoje finanse?</p>
-							
-							<p class="text-center">Wybierz interesującą Cię opcję z menu powyżej</p>
+							<p class="text-center">Do zobaczenia następnym razem</p>
 						</div>
-						
 					</div>
 				</article>
-				
 			</div>
 		</main>
 		

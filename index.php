@@ -1,3 +1,11 @@
+<?php
+	session_start();
+	if ((isset($_SESSION['loggedUserId']))){
+		header('Location: main.php');
+		exit();
+	}
+?>
+
 <!DOCTYPE html>
 <html lang="pl">
 	<head>

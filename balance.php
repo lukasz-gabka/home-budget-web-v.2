@@ -1,3 +1,12 @@
+<?php
+	session_start();
+	
+	if (!$_SESSION['loggedUserId']){
+		header('Location: index.php');
+		exit();
+	}
+?>
+
 <!DOCTYPE html>
 <html lang="pl">
 	<head>
@@ -20,7 +29,7 @@
 		
 		<nav class="navbar navbar-dark navbar-expand-md navigation pb-0">
 			<header>
-				<a class="navbar-brand mr-5" href="index.php">
+				<a class="navbar-brand mr-5" href="main.php">
 					<img src="img/piggy.png" height="60" alt="logo"><p class="align-middle"><span class="yellow">e</span>-świnka</p>
 				</a>
 			</header>
@@ -31,7 +40,10 @@
 			
 			<div class="collapse navbar-collapse menu">
 				<div class="navbar-nav ml-auto">
-					<span class="nav-item my-auto mr-3 loogedUser">Zalogowany użytkownik: <span class="font-weight-bold yellow">user</span></span>
+					<span class="nav-item my-auto mr-3 loogedUser">Zalogowany użytkownik: 
+						<span class="font-weight-bold yellow"><?php echo $_SESSION['LoggedUserName']; ?>
+						</span>
+					</span>
 					
 					<a class="nav-item nav-link" href="index.php">
 						<i class="icon-logout"></i> Wyloguj

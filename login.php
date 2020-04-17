@@ -1,3 +1,47 @@
+<?php
+	session_start();
+	if (isset($_POST['email']) && isset($_POST['password'])){
+		//connect with host
+		require_once "connect.php";
+		try {
+			$connection = new PDO('mysql:host='.$databaseHost.';dbname='.$databaseName.';charset=utf8', $databaseLogin, $databasePassword, [
+				PDO::ATTR_EMULATE_PREPARES => false,
+				PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+			]);
+			
+			$email = $_POST['email'];
+			$password = $_POST['password'];
+			
+			///check if email exists in database
+			$userQuery = $connection->prepare('SELECT id, name, password FROM users WHERE email= :email');
+			$userQuery->bindValue(':email', $email, PDO::PARAM_STR);
+			$userQuery->execute();
+			
+			if ($userQuery->rowCount()){
+				$user = $userQuery->fetch();
+				
+				if (password_verify($password, $user['password'])) {
+					$_SESSION['loggedUserId'] = $user['id'];
+					$_SESSION['LoggedUserName'] = $user['name'];
+					header('Location: main.php');
+				}
+				else {
+					$_SESSION['passwordError'] = 'Podane hasło jest nieprawidłowe';
+					$_SESSION['emailMemorized'] = $email;
+				}
+			}
+			else{
+				$_SESSION['emailError'] = 'Użytkownik o takim adresie e-mail nie istnieje';
+				$_SESSION['emailMemorized'] = $email;
+			}
+		}
+		catch (PDOException $error){
+			//echo $error->getMessage();
+			exit('Błąd serwera');
+		}
+	}
+?>
+
 <!DOCTYPE html>
 <html lang="pl">
 	<head>
@@ -50,7 +94,7 @@
 					</header>
 					
 					<div class="container">
-						<form method="post" enctype="application/x-www-form-urlencoded">
+						<form method="post">
 							<div class="row mt-5">
 								<div class="col-12">
 									<div class="input-group justify-content-center mb-5">
@@ -60,7 +104,19 @@
 											</span>
 										</div>
 										
-										<input type="email" class="form-control inputs" placeholder="e-mail" required>
+										<input type="email" class="form-control inputs" placeholder="e-mail" name="email" value="<?php
+											if (isset($_SESSION['emailMemorized'])){
+												echo $_SESSION['emailMemorized'];
+												unset($_SESSION['emailMemorized']);
+											}
+										?>" required>
+										
+										<?php
+											if (isset($_SESSION['emailError'])){
+												echo '<div class="input-group justify-content-center text-danger small">'.$_SESSION['emailError'].'</div>';
+												unset($_SESSION['emailError']);
+											}
+										?>
 									</div>
 									
 									<div class="input-group justify-content-center mb-5">
@@ -70,7 +126,14 @@
 											</span>
 										</div>
 										
-										<input type="password" class="form-control inputs" placeholder="Hasło" required>
+										<input type="password" class="form-control inputs" placeholder="Hasło" name="password" required>
+										
+										<?php
+											if (isset($_SESSION['passwordError'])){
+												echo '<div class="input-group justify-content-center text-danger small">'.$_SESSION['passwordError'].'</div>';
+												unset($_SESSION['passwordError']);
+											}
+										?>
 									</div>
 									
 									<div class="input-group justify-content-center mb-5">	
