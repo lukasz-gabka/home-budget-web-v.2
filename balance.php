@@ -20,7 +20,7 @@
 		
 		<nav class="navbar navbar-dark navbar-expand-md navigation pb-0">
 			<header>
-				<a class="navbar-brand mr-5" href="index.html">
+				<a class="navbar-brand mr-5" href="index.php">
 					<img src="img/piggy.png" height="60" alt="logo"><p class="align-middle"><span class="yellow">e</span>-świnka</p>
 				</a>
 			</header>
@@ -33,7 +33,7 @@
 				<div class="navbar-nav ml-auto">
 					<span class="nav-item my-auto mr-3 loogedUser">Zalogowany użytkownik: <span class="font-weight-bold yellow">user</span></span>
 					
-					<a class="nav-item nav-link" href="index.html">
+					<a class="nav-item nav-link" href="index.php">
 						<i class="icon-logout"></i> Wyloguj
 					</a>
 				</div>
@@ -43,13 +43,13 @@
 		<nav class="navbar navbar-dark navbar-expand-md navigation2 py-0 py-md-2">	
 			<div class="collapse navbar-collapse menu">
 				<div class="navbar-nav mx-auto">
-					<a class="nav-item nav-link mx-3" href="income.html">
+					<a class="nav-item nav-link mx-3" href="income.php">
 						<i class="icon-up-big"></i> Dodaj przychód
 					</a>
-					<a class="nav-item nav-link mx-3" href="expense.html">
+					<a class="nav-item nav-link mx-3" href="expense.php">
 						<i class="icon-down-big"></i> Dodaj wydatek
 					</a>
-					<a class="nav-item nav-link mx-3 active disabled" href="balance.html">
+					<a class="nav-item nav-link mx-3 active disabled" href="balance.php">
 						<i class="icon-chart-bar"></i> Bilans
 					</a>
 					<a class="nav-item nav-link mx-3" href="#">

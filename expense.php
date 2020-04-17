@@ -12,16 +12,15 @@
 		<link rel="stylesheet" href="style.css"/>
 		<link rel="stylesheet" href="css/fontello.css" type="text/css"/>
 		
-		<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700%7CTitan+One&display=swap&subset=latin-ext" rel="stylesheet">
-				
-		<title>e-świnka - dodaj przychód</title>
+		<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700%7CTitan+One&display=swap&subset=latin-ext" rel="stylesheet">		
+		<title>e-świnka - dodaj wydatek</title>
 	</head>
 	
 	<body>
 		
 		<nav class="navbar navbar-dark navbar-expand-md navigation pb-0">
 			<header>
-				<a class="navbar-brand mr-5" href="index.html">
+				<a class="navbar-brand mr-5" href="index.php">
 					<img src="img/piggy.png" height="60" alt="logo"><p class="align-middle"><span class="yellow">e</span>-świnka</p>
 				</a>
 			</header>
@@ -34,7 +33,7 @@
 				<div class="navbar-nav ml-auto">
 					<span class="nav-item my-auto mr-3 loogedUser">Zalogowany użytkownik: <span class="font-weight-bold yellow">user</span></span>
 					
-					<a class="nav-item nav-link" href="index.html">
+					<a class="nav-item nav-link" href="index.php">
 						<i class="icon-logout"></i> Wyloguj
 					</a>
 				</div>
@@ -44,13 +43,13 @@
 		<nav class="navbar navbar-dark navbar-expand-md navigation2 py-0 py-md-2">	
 			<div class="collapse navbar-collapse menu">
 				<div class="navbar-nav mx-auto">
-					<a class="nav-item nav-link mx-3 active disabled" href="income.html">
+					<a class="nav-item nav-link mx-3" href="income.php">
 						<i class="icon-up-big"></i> Dodaj przychód
 					</a>
-					<a class="nav-item nav-link mx-3" href="expense.html">
+					<a class="nav-item nav-link mx-3 active disabled" href="expense.php">
 						<i class="icon-down-big"></i> Dodaj wydatek
 					</a>
-					<a class="nav-item nav-link mx-3" href="balance.html">
+					<a class="nav-item nav-link mx-3" href="balance.php">
 						<i class="icon-chart-bar"></i> Bilans
 					</a>
 					<a class="nav-item nav-link mx-3" href="#">
@@ -64,7 +63,7 @@
 			<div class="container mt-5">
 				<article>
 					<header>
-						<h1 class="text-center">Dodaj przychód</h1>
+						<h1 class="text-center">Dodaj wydatek</h1>
 					</header>
 					
 					<div class="container">
@@ -78,7 +77,7 @@
 											</span>
 										</div>
 										
-										<input type="number" class="form-control inputs" placeholder="Kwota przychodu" step="0.01" min="0.01" required>
+										<input type="number" class="form-control inputs" placeholder="Kwota wydatku" step="0.01" min="0.01" required>
 									</div>
 									
 									<div class="input-group justify-content-center mb-5">
@@ -94,16 +93,45 @@
 									<div class="input-group justify-content-center mb-5">
 										<div class="input-group-prepend">
 											<label class="input-group-text inputsPrepend" for="paymentOptions">
-												<i class="icon-tag"></i>
+												<i class="icon-wallet"></i>
 											</label>
 										</div>
 										
 										<select class="custom-select inputs" id="paymentOptions" required>
-											<option selected disabled value="">Wybierz kategorię przychodu</option>
-											<option>Wynagrodzenie</option>
-											<option>Odsetki bankowe</option>
-											<option>Sprzedaż na Allegro</option>
-											<option>Inne</option>
+											<option selected disabled value="">Wybierz sposób płatności</option>
+											<option>Gotówka</option>
+											<option>Przelew</option>
+											<option>Karta kredytowa</option>
+											<option>Karta debetowa</option>
+										</select>
+									</div>
+								
+									<div class="input-group justify-content-center mb-5">
+										<div class="input-group-prepend">
+											<label class="input-group-text inputsPrepend" for="category">
+												<i class="icon-tag"></i>
+											</label>
+										</div>
+										
+										<select class="custom-select inputs" id="category" required>
+											<option selected disabled value="">Wybierz kategorię wydatku</option>
+											<option>Jedzenie</option>
+											<option>Mieszkanie</option>
+											<option>Transport</option>
+											<option>Telekomunikacja</option>
+											<option>Opieka zdrowotna</option>
+											<option>Ubranie</option>
+											<option>Higiena</option>
+											<option>Dzieci</option>
+											<option>Rozrywka</option>
+											<option>Wycieczka</option>
+											<option>Szkolenia</option>
+											<option>Książki</option>
+											<option>Oszczędności</option>
+											<option>Na złotą jesień, czyli emeryturę</option>
+											<option>Spłata długów</option>
+											<option>Darowizna</option>
+											<option>Inne wydatki</option>
 										</select>
 									</div>
 									

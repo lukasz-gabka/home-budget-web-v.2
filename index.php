@@ -13,14 +13,14 @@
 		<link rel="stylesheet" href="css/fontello.css" type="text/css"/>
 		
 		<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700%7CTitan+One&display=swap&subset=latin-ext" rel="stylesheet">		
-		<title>e-świnka - logowanie</title>
+		<title>e-świnka</title>
 	</head>
 	
 	<body>
 		
 		<nav class="navbar navbar-dark navbar-expand-sm navigation">
 			<header>
-				<a class="navbar-brand mr-5" href="index.html">
+				<a class="navbar-brand mr-5" href="index.php">
 					<img src="img/piggy.png" height="60" alt="logo"><p class="align-middle"><span class="yellow">e</span>-świnka</p>
 				</a>
 			</header>
@@ -31,11 +31,11 @@
 			
 			<div class="collapse navbar-collapse" id="menu">
 				<div class="navbar-nav ml-auto">
-					<a class="nav-item nav-link active disabled" href="login.html">
+					<a class="nav-item nav-link" href="login.php">
 						<i class="icon-login"></i> Logowanie
 					</a>
 					
-					<a class="nav-item nav-link" href="register.html">
+					<a class="nav-item nav-link" href="register.php">
 						<i class="icon-user-plus"></i> Rejestracja
 					</a>
 				</div>
@@ -46,41 +46,25 @@
 			<div class="container mt-5">
 				<article>
 					<header>
-						<h1 class="text-center">Zaloguj się</h1>
+						<h1 class="text-center">Witaj na <span class="font-weight-bold"><span class="yellow">e</span>-świnka</span>!</h1>
 					</header>
 					
-					<div class="container">
-						<form method="post" enctype="application/x-www-form-urlencoded">
-							<div class="row mt-5">
-								<div class="col-12">
-									<div class="input-group justify-content-center mb-5">
-										<div class="input-group-prepend">
-											<span class="input-group-text inputsPrepend">
-												<i class="icon-mail-alt"></i>
-											</span>
-										</div>
-										
-										<input type="email" class="form-control inputs" placeholder="e-mail" required>
-									</div>
-									
-									<div class="input-group justify-content-center mb-5">
-										<div class="input-group-prepend">
-											<span class="input-group-text inputsPrepend">
-												<i class="icon-lock"></i>
-											</span>
-										</div>
-										
-										<input type="password" class="form-control inputs" placeholder="Hasło" required>
-									</div>
-									
-									<div class="input-group justify-content-center mb-5">	
-										<input type="submit" class="btn form-control inputs submitButtons" value="Zaloguj się">
-									</div>
-								</div>
-							</div>
-						</form>
-					</div>
+					<div class="row mt-5">
+						<div class="col-md-4 mb-4 my-auto">
+							<img src="img/piggy2.jpg" class="img-fluid" alt="piggy">
+						</div>
 					
+						<div class="col-md-8">
+							<p class="lead text-center"><span class="font-weight-bold"><span class="yellow">e</span>-świnka</span> to aplikacja do zarządzania budżetem domowym.</p>
+						
+							<p class="text-justify">Dodawaj na bieżąco wszystkie swoje operacje pieniężne, a dzięki opcji ich wizualizacji szybko zorientujesz się, gdzie należy obnizyć swoje wydatki. Zdziwisz się, jak taka z pozoru prosta aplikacja pomoże Ci zaoszczędzić Twoje pieniądze.</p>
+							
+							<p class="text-justify"><span class="font-weight-bold"><span class="yellow">e</span>-świnka</span> to Twoja prywatna elektroniczna skarbonka do oszczędzania pieniędzy i zarządzania budżetem domowym.</p>
+							
+							<p class="lead text-center">Zarejestruj się i zacznij oszczędzać już dziś!</p>
+						</div>
+						
+					</div>
 				</article>
 				
 			</div>
