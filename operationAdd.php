@@ -1,10 +1,13 @@
 <?php
 	session_start();
 	
-	if (!$_SESSION['loggedUserId']){
-		header('Location: index.php');
+	if (!isset($_SESSION['operation'])){
+		header('Location: main.php');
 		exit();
 	}
+	
+	$operation = $_SESSION['operation'];
+	unset($_SESSION['operation']);
 ?>
 
 <!DOCTYPE html>
@@ -21,8 +24,9 @@
 		<link rel="stylesheet" href="style.css"/>
 		<link rel="stylesheet" href="css/fontello.css" type="text/css"/>
 		
-		<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700%7CTitan+One&display=swap&subset=latin-ext" rel="stylesheet">		
-		<title>e-świnka</title>
+		<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700%7CTitan+One&display=swap&subset=latin-ext" rel="stylesheet">
+				
+		<title>e-świnka - dodaj przychód</title>
 	</head>
 	
 	<body>
@@ -75,23 +79,21 @@
 			<div class="container mt-5">
 				<article>
 					<header>
-						<h1 class="text-center">Witaj <?php echo $_SESSION['LoggedUserName']; ?></h1>
+						<h1 class="text-center">Dodano <?php echo $operation; ?></h1>
 					</header>
 					
 					<div class="row mt-5">
 						<div class="col-md-4 mb-4 my-auto">
-							<img src="img/piggy3.jpg" class="img-fluid" alt="piggy">
+							<img src="img/piggy6.jpg" class="img-fluid" style="max-with:150%" alt="piggy">
 						</div>
 					
 						<div class="col-md-8">
-							<p class="text-center">Jak tam Twoje finanse?</p>
-							
-							<p class="text-center">Wybierz interesującą Cię opcję z menu powyżej</p>
+						
+							<p class="text-center">Twój <?php echo $operation; ?> został dodany poprawnie</p>
 						</div>
 						
 					</div>
-				</article>
-				
+				</article>		
 			</div>
 		</main>
 		

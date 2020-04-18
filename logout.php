@@ -5,7 +5,7 @@
 		header('Location: index.php');
 		exit();
 	}
-	if (isset($_SESSION['loggedUserId'])) unset($_SESSION['loggedUserId']);
+	unset($_SESSION['loggedUserId']);
 	if (isset($_SESSION['loggedUserName'])) unset($_SESSION['loggedUserName']);
 ?>
 

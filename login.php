@@ -12,7 +12,6 @@
 			$email = $_POST['email'];
 			$password = $_POST['password'];
 			
-			///check if email exists in database
 			$userQuery = $connection->prepare('SELECT id, name, password FROM users WHERE email= :email');
 			$userQuery->bindValue(':email', $email, PDO::PARAM_STR);
 			$userQuery->execute();
@@ -23,6 +22,7 @@
 				if (password_verify($password, $user['password'])) {
 					$_SESSION['loggedUserId'] = $user['id'];
 					$_SESSION['LoggedUserName'] = $user['name'];
+					$_SESSION['LoggedUserEmail'] = $email;
 					header('Location: main.php');
 				}
 				else {

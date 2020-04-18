@@ -45,7 +45,7 @@
 						</span>
 					</span>
 					
-					<a class="nav-item nav-link" href="index.php">
+					<a class="nav-item nav-link" href="logout.php">
 						<i class="icon-logout"></i> Wyloguj
 					</a>
 				</div>
