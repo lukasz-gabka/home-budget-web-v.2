@@ -5,6 +5,41 @@
 		header('Location: index.php');
 		exit();
 	}
+	
+	if (isset($_POST['amount'])){
+		//connect with host
+		require_once "connect.php";
+		try {
+			$connection = new PDO('mysql:host='.$databaseHost.';dbname='.$databaseName.';charset=utf8', $databaseLogin, $databasePassword, [
+				PDO::ATTR_EMULATE_PREPARES => false,
+				PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+			]);
+			
+			$amount = $_POST['amount'];
+			$date = $_POST['date'];
+			$payment = $_POST['payment'];
+			$category = $_POST['category'];
+			if (isset($_POST['comment'])) $comment = $_POST['comment'];
+			
+			$userQuery = $connection->prepare('INSERT INTO expenses VALUES (NULL, :amount, :date, :payment, :category, :comment, :userId)');
+			$userQuery->bindValue(':amount', $amount, PDO::PARAM_STR);
+			$userQuery->bindValue(':date', $date, PDO::PARAM_STR);
+			$userQuery->bindValue(':payment', $payment, PDO::PARAM_STR);
+			$userQuery->bindValue(':category', $category, PDO::PARAM_STR);
+			$userQuery->bindValue(':comment', $comment, PDO::PARAM_STR);
+			$userQuery->bindValue(':userId', $_SESSION['loggedUserId'], PDO::PARAM_STR);
+			$userQuery->execute();
+			
+			$_SESSION['operation'] = "wydatek";
+			header('Location: operationAdd.php');
+		}
+		catch (PDOException $error){
+			//echo $error->getMessage();
+			$_SESSION['databaseError'] = true;
+			header('Location: error.php');
+			exit();
+		}
+	}
 ?>
 
 <!DOCTYPE html>
@@ -89,7 +124,7 @@
 											</span>
 										</div>
 										
-										<input type="number" class="form-control inputs" placeholder="Kwota wydatku" step="0.01" min="0.01" required>
+										<input type="number" class="form-control inputs" placeholder="Kwota wydatku" step="0.01" min="0.01" name="amount" required>
 									</div>
 									
 									<div class="input-group justify-content-center mb-5">
@@ -99,7 +134,7 @@
 											</span>
 										</div>
 										
-										<input placeholder="Data(kliknij, aby ustawić)" class="textbox-n form-control inputs" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date" required>
+										<input placeholder="Data(kliknij, aby ustawić)" class="textbox-n form-control inputs" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date" name="date" required>
 									</div>
 									
 									<div class="input-group justify-content-center mb-5">
@@ -109,7 +144,7 @@
 											</label>
 										</div>
 										
-										<select class="custom-select inputs" id="paymentOptions" required>
+										<select class="custom-select inputs" id="paymentOptions" name="payment" required>
 											<option selected disabled value="">Wybierz sposób płatności</option>
 											<option>Gotówka</option>
 											<option>Przelew</option>
@@ -125,7 +160,7 @@
 											</label>
 										</div>
 										
-										<select class="custom-select inputs" id="category" required>
+										<select class="custom-select inputs" id="category" name="category" required>
 											<option selected disabled value="">Wybierz kategorię wydatku</option>
 											<option>Jedzenie</option>
 											<option>Mieszkanie</option>
@@ -154,7 +189,7 @@
 											</span>
 										</div>
 										
-										<textarea class="form-control inputs" maxlength="40" placeholder="Komentarz(opcjonalnie)"></textarea>
+										<textarea class="form-control inputs" maxlength="40" placeholder="Komentarz(opcjonalnie)" name="comment"></textarea>
 									</div>
 									
 									<div class="d-flex justify-content-center mb-5 d-inline-block">	

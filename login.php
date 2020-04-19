@@ -37,7 +37,9 @@
 		}
 		catch (PDOException $error){
 			//echo $error->getMessage();
-			exit('Błąd serwera');
+			$_SESSION['databaseError'] = true;
+			header('Location: error.php');
+			exit();
 		}
 	}
 ?>

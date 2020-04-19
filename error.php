@@ -1,13 +1,10 @@
 <?php
 	session_start();
-	
-	if (!isset($_SESSION['loggedUserId'])){
-		header('Location: index.php');
+	if ((!isset($_SESSION['databaseError']))){
+		header('Location: main.php');
 		exit();
 	}
-	unset($_SESSION['loggedUserId']);
-	unset($_SESSION['loggedUserName']);
-	unset($_SESSION['LoggedUserEmail']);
+	unset($_SESSION['databaseError']);
 ?>
 
 <!DOCTYPE html>
@@ -36,41 +33,29 @@
 					<img src="img/piggy.png" height="60" alt="logo"><p class="align-middle"><span class="yellow">e</span>-świnka</p>
 				</a>
 			</header>
-			
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu" aria-expanded="false" aria-label="Przełącznik nawigacji">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			
-			<div class="collapse navbar-collapse" id="menu">
-				<div class="navbar-nav ml-auto">
-					<a class="nav-item nav-link" href="login.php">
-						<i class="icon-login"></i> Logowanie
-					</a>
-					
-					<a class="nav-item nav-link" href="register.php">
-						<i class="icon-user-plus"></i> Rejestracja
-					</a>
-				</div>
-			</div>
 		</nav>
 		
 		<main>
 			<div class="container mt-5">
 				<article>
 					<header>
-						<h1 class="text-center">Wylogowano</h1>
+						<h1 class="text-center">Błąd serwera</span>!</h1>
 					</header>
 					
 					<div class="row mt-5">
 						<div class="col-md-4 mb-4 my-auto">
-							<img src="img/piggy5.png" class="img-fluid" alt="piggy">
+							<img src="img/piggy7.png" class="img-fluid" alt="piggy">
 						</div>
 					
 						<div class="col-md-8">
-							<p class="text-center">Do zobaczenia następnym razem</p>
+							<p class="lead text-center">Przepraszamy za niedogodności</p>
+						
+							<p class="text-center"><a href="index.php">Wróć do strony głównej</a></p>
 						</div>
+						
 					</div>
 				</article>
+				
 			</div>
 		</main>
 		
