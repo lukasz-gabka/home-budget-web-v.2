@@ -5,6 +5,61 @@
 		header('Location: index.php');
 		exit();
 	}
+		
+	if (isset($_POST['submit1']) || isset($_POST['submit2'])){
+		require_once "connect.php";
+		try {
+			$connection = new PDO('mysql:host='.$databaseHost.';dbname='.$databaseName.';charset=utf8', $databaseLogin, $databasePassword, [
+				PDO::ATTR_EMULATE_PREPARES => false,
+				PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+			]);
+			
+			
+			
+			if (isset($_POST['submit1'])){
+				switch ($_POST['range']){
+					case "Bieżący miesiąc": {						
+						$firstDate = date("Y-m-d", strtotime("first day of this month"));
+						$lastDate = date("Y-m-d", strtotime("last day of this month"));
+					}
+					break;
+					case "Poprzedni miesiąc": {
+						$firstDate = date("Y-m-d", strtotime("first day of previous month"));
+						$lastDate = date("Y-m-d", strtotime("last day of previous month"));
+					}
+					break;
+					case "Bieżący rok": {
+						$firstDate = date("Y-m-d", strtotime("first day of January"));
+						$lastDate = date("Y-m-d", strtotime("last day of December"));
+					}
+					break;
+					
+				} 
+			 } 
+			else if (isset($_POST['submit2'])){
+				$firstDate = $_POST['firstDate'];
+				$lastDate = date($_POST['lastDate']);
+			 }
+			 
+			 $statementIncomes = $connection->query("SELECT amount, date, category, comment FROM incomes WHERE date BETWEEN '$firstDate' AND '$lastDate' AND userId = ".$_SESSION['loggedUserId']." ORDER BY date ASC");
+			 $statementExpenses = $connection->query("SELECT amount, date, category, comment FROM expenses WHERE date BETWEEN '$firstDate' AND '$lastDate' AND userId = ".$_SESSION['loggedUserId']." ORDER BY date ASC");
+						
+			$_SESSION['incomes'] = $statementIncomes->fetchAll(PDO::FETCH_ASSOC);
+			$_SESSION['expenses'] = $statementExpenses->fetchAll(PDO::FETCH_ASSOC);
+			$_SESSION['balanceToShow'] = true;
+			$_SESSION['firstDate'] = date("d-m-Y", strtotime($firstDate));
+			$_SESSION['lastDate'] = date("d-m-Y", strtotime($lastDate));
+			
+			header('Location: balanceResult.php');
+			exit();
+		}
+		catch (PDOException $error){
+			//echo $error->getMessage();
+			$_SESSION['databaseError'] = true;
+			header('Location: error.php');
+			exit();
+		}
+	}
 ?>
 
 <!DOCTYPE html>
@@ -79,7 +134,7 @@
 					</header>
 					
 					<div class="container">
-						<form method="post" enctype="application/x-www-form-urlencoded">
+						<form method="post">
 							<div class="row mt-5">
 								<div class="col-12">
 									<div class="input-group justify-content-center mb-5">
@@ -89,7 +144,7 @@
 											</label>
 										</div>
 										
-										<select class="custom-select inputs" id="paymentOptions" required>
+										<select class="custom-select inputs" id="paymentOptions" name="range" required>
 											<option selected disabled value="">Wybierz zakres bilansu</option>
 											<option>Bieżący miesiąc</option>
 											<option>Poprzedni miesiąc</option>
@@ -99,7 +154,7 @@
 									</div>
 									
 									<div class="d-flex justify-content-center mb-5 d-inline-block">	
-										<input type="submit" class="btn form-control inputs submitButtons" value="Wyświetl bilans">
+										<input type="submit" class="btn form-control inputs submitButtons" value="Wyświetl bilans" name="submit1">
 									</div>
 								</div>
 							</div>
@@ -116,7 +171,7 @@
 										</button>
 									</div>
 									
-									<form method="post" enctype="application/x-www-form-urlencoded">
+									<form method="post">
 										<div class="modal-body">
 											
 												<div class="input-group justify-content-center my-5">
@@ -126,7 +181,7 @@
 														</span>
 													</div>
 													
-													<input placeholder="Data początkowa(kliknij, aby ustawić)" class="textbox-n form-control inputs" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date1" required>
+													<input placeholder="Data początkowa(kliknij, aby ustawić)" class="textbox-n form-control inputs" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date1" name="firstDate" required>
 												</div>
 												
 												<div class="input-group justify-content-center mb-5">
@@ -136,12 +191,12 @@
 														</span>
 													</div>
 													
-													<input placeholder="Data końcowa(kliknij, aby ustawić)" class="textbox-n form-control inputs" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date2" required>
+													<input placeholder="Data końcowa(kliknij, aby ustawić)" class="textbox-n form-control inputs" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date2" name="lastDate"required>
 												</div>
 										</div>
 										
 										<div class="modal-footer">
-											<input type="submit" class="btn form-control inputs submitButtons" value="Wyświetl bilans">
+											<input type="submit" class="btn form-control inputs submitButtons" value="Wyświetl bilans" name="submit2">
 										
 											<input type="reset" class="btn form-control inputs submitButtons bg-danger" style="border:none;" value="Wyczyść">
 										</div>

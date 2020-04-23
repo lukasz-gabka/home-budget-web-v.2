@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Czas generowania: 14 Kwi 2020, 17:51
+-- Czas generowania: 23 Kwi 2020, 22:13
 -- Wersja serwera: 5.7.29-0ubuntu0.18.04.1
--- Wersja PHP: 7.2.24-0ubuntu0.18.04.3
+-- Wersja PHP: 7.2.24-0ubuntu0.18.04.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -30,8 +30,10 @@ CREATE TABLE `expenses` (
   `id` int(11) NOT NULL,
   `amount` float NOT NULL,
   `date` date NOT NULL,
+  `payment` text CHARACTER SET utf8 COLLATE utf8_polish_ci,
   `category` text CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
-  `comment` text CHARACTER SET utf8 COLLATE utf8_polish_ci
+  `comment` text CHARACTER SET utf8 COLLATE utf8_polish_ci,
+  `userId` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -45,7 +47,8 @@ CREATE TABLE `incomes` (
   `amount` float NOT NULL,
   `date` date NOT NULL,
   `category` text CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
-  `comment` text CHARACTER SET utf8 COLLATE utf8_polish_ci
+  `comment` text CHARACTER SET utf8 COLLATE utf8_polish_ci,
+  `userId` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
