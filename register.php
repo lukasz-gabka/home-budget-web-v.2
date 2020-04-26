@@ -6,7 +6,10 @@
 	
 		//check name
 		$name = $_POST['name'];
-		if (!ctype_alnum($name)) {
+		
+		$pattern = "/^[0-9a-zA-ZąĄćĆęĘłŁńŃóÓśŚżŻźŹ]+$/";
+		
+		if (!preg_match($pattern, $name)) {
 			$isDataCorrect = false;
 			$_SESSION['nameError'] = "Imię może się składać jedynie z liter i cyfr";
 		}

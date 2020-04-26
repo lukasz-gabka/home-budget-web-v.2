@@ -14,8 +14,6 @@
 				PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
 			]);
 			
-			
-			
 			if (isset($_POST['submit1'])){
 				switch ($_POST['range']){
 					case "Bieżący miesiąc": {						
