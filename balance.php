@@ -33,19 +33,32 @@
 						$lastDate = date("Y-m-d", strtotime("last day of December"));
 					}
 					break;
-					
+					default:
+						$_SESSION['balanceError'] = "Wybierz zakres bilansu";
+						header('Location: balance.php');
+						exit();
 				} 
 			 } 
 			else if (isset($_POST['submit2'])){
 				$firstDate = $_POST['firstDate'];
 				$lastDate = date($_POST['lastDate']);
+				
+				if ($lastDate < $firstDate){
+					$_SESSION['balanceError'] = "Data końcowa nie może być wcześniejsza niż data początkowa";
+					header('Location: balance.php');
+					exit();
+				}
 			 }
 			 
 			 $statementIncomes = $connection->query("SELECT amount, date, category, comment FROM incomes WHERE date BETWEEN '$firstDate' AND '$lastDate' AND userId = ".$_SESSION['loggedUserId']." ORDER BY date ASC");
 			 $statementExpenses = $connection->query("SELECT amount, date, category, comment FROM expenses WHERE date BETWEEN '$firstDate' AND '$lastDate' AND userId = ".$_SESSION['loggedUserId']." ORDER BY date ASC");
+			 $statementIncomeCategories = $connection->query("SELECT ROUND(SUM(amount), 2), category FROM incomes WHERE userId = ".$_SESSION['loggedUserId']." AND date BETWEEN '$firstDate' AND '$lastDate' GROUP BY category ORDER BY category ASC");
+			 $statementExpenseCategories = $connection->query("SELECT ROUND(SUM(amount), 2), category FROM expenses WHERE userId = ".$_SESSION['loggedUserId']." AND date BETWEEN '$firstDate' AND '$lastDate' GROUP BY category ORDER BY category ASC");
 						
 			$_SESSION['incomes'] = $statementIncomes->fetchAll(PDO::FETCH_ASSOC);
 			$_SESSION['expenses'] = $statementExpenses->fetchAll(PDO::FETCH_ASSOC);
+			$_SESSION['icomeCategories'] = $statementIncomeCategories->fetchAll(PDO::FETCH_ASSOC);
+			$_SESSION['expenseCategories'] = $statementExpenseCategories->fetchAll(PDO::FETCH_ASSOC);
 			$_SESSION['balanceToShow'] = true;
 			$_SESSION['firstDate'] = date("d-m-Y", strtotime($firstDate));
 			$_SESSION['lastDate'] = date("d-m-Y", strtotime($lastDate));
@@ -137,7 +150,7 @@
 						<form method="post">
 							<div class="row mt-5">
 								<div class="col-12">
-									<div class="input-group justify-content-center mb-5">
+									<div class="input-group justify-content-center">
 										<div class="input-group-prepend">
 											<label class="input-group-text inputsPrepend" for="paymentOptions">
 												<i class="icon-calendar"></i>
@@ -153,7 +166,14 @@
 										</select>
 									</div>
 									
-									<div class="d-flex justify-content-center mb-5 d-inline-block">	
+									<?php
+										if (isset($_SESSION['balanceError'])){
+											echo '<div class="input-group justify-content-center text-danger small">'.$_SESSION['balanceError'].'</div>';
+											unset($_SESSION['balanceError']);
+										}
+									?>
+									
+									<div class="d-flex justify-content-center my-5 d-inline-block">	
 										<input type="submit" class="btn form-control inputs submitButtons" value="Wyświetl bilans" name="submit1">
 									</div>
 								</div>

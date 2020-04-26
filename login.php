@@ -99,7 +99,7 @@
 						<form method="post">
 							<div class="row mt-5">
 								<div class="col-12">
-									<div class="input-group justify-content-center mb-5">
+									<div class="input-group justify-content-center">
 										<div class="input-group-prepend">
 											<span class="input-group-text inputsPrepend">
 												<i class="icon-mail-alt"></i>
@@ -112,16 +112,16 @@
 												unset($_SESSION['emailMemorized']);
 											}
 										?>" required>
-										
-										<?php
-											if (isset($_SESSION['emailError'])){
-												echo '<div class="input-group justify-content-center text-danger small">'.$_SESSION['emailError'].'</div>';
-												unset($_SESSION['emailError']);
-											}
-										?>
 									</div>
 									
-									<div class="input-group justify-content-center mb-5">
+									<?php
+										if (isset($_SESSION['emailError'])){
+											echo '<div class="input-group justify-content-center text-danger small">'.$_SESSION['emailError'].'</div>';
+											unset($_SESSION['emailError']);
+										}
+									?>
+									
+									<div class="input-group justify-content-center mt-5">
 										<div class="input-group-prepend">
 											<span class="input-group-text inputsPrepend">
 												<i class="icon-lock"></i>
@@ -129,16 +129,16 @@
 										</div>
 										
 										<input type="password" class="form-control inputs" placeholder="Hasło" name="password" required>
-										
-										<?php
-											if (isset($_SESSION['passwordError'])){
-												echo '<div class="input-group justify-content-center text-danger small">'.$_SESSION['passwordError'].'</div>';
-												unset($_SESSION['passwordError']);
-											}
-										?>
 									</div>
 									
-									<div class="input-group justify-content-center mb-5">	
+									<?php
+										if (isset($_SESSION['passwordError'])){
+											echo '<div class="input-group justify-content-center text-danger small">'.$_SESSION['passwordError'].'</div>';
+											unset($_SESSION['passwordError']);
+										}
+									?>
+									
+									<div class="input-group justify-content-center my-5">	
 										<input type="submit" class="btn form-control inputs submitButtons" value="Zaloguj się">
 									</div>
 								</div>

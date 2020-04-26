@@ -117,7 +117,7 @@
 						<form method="post" enctype="application/x-www-form-urlencoded">
 							<div class="row mt-5">
 								<div class="col-12">
-									<div class="input-group justify-content-center mb-5">
+									<div class="input-group justify-content-center">
 										<div class="input-group-prepend">
 											<span class="input-group-text inputsPrepend">
 												<i class="icon-money"></i>
@@ -127,7 +127,7 @@
 										<input type="number" class="form-control inputs" placeholder="Kwota wydatku" step="0.01" min="0.01" name="amount" required>
 									</div>
 									
-									<div class="input-group justify-content-center mb-5">
+									<div class="input-group justify-content-center mt-5">
 										<div class="input-group-prepend">
 											<span class="input-group-text inputsPrepend">
 												<i class="icon-calendar"></i>
@@ -137,7 +137,7 @@
 										<input placeholder="Data(kliknij, aby ustawić)" class="textbox-n form-control inputs" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date" name="date" required>
 									</div>
 									
-									<div class="input-group justify-content-center mb-5">
+									<div class="input-group justify-content-center mt-5">
 										<div class="input-group-prepend">
 											<label class="input-group-text inputsPrepend" for="paymentOptions">
 												<i class="icon-wallet"></i>
@@ -153,7 +153,7 @@
 										</select>
 									</div>
 								
-									<div class="input-group justify-content-center mb-5">
+									<div class="input-group justify-content-center mt-5">
 										<div class="input-group-prepend">
 											<label class="input-group-text inputsPrepend" for="category">
 												<i class="icon-tag"></i>
@@ -182,7 +182,7 @@
 										</select>
 									</div>
 									
-									<div class="input-group justify-content-center mb-5">
+									<div class="input-group justify-content-center mt-5">
 										<div class="input-group-prepend">
 											<span class="input-group-text inputsPrepend">
 												<i class="icon-comment"></i>
@@ -192,7 +192,7 @@
 										<textarea class="form-control inputs" maxlength="40" placeholder="Komentarz(opcjonalnie)" name="comment"></textarea>
 									</div>
 									
-									<div class="d-flex justify-content-center mb-5 d-inline-block">	
+									<div class="d-flex justify-content-center my-5 d-inline-block">	
 										<input type="submit" class="btn form-control inputs submitButtons mr-5" value="Dodaj">
 										
 										<input type="reset" class="btn form-control inputs submitButtons bg-danger ml-5" style="border:none;" value="Wyczyść">

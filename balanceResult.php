@@ -87,10 +87,9 @@
 							<h2 class="text-center">Przychody</h2>
 							
 							<div class="table-responsive">
-								<table class="table table-sm table-bordered table-hover text-center">
+								<table class="table table-sm table-bordered table-hover text-center small">
 									<thead style="background-color: #9FFF87">
 										<tr>
-											<th scope="col">L.p.</th>
 											<th scope="col">Kategoria</th>
 											<th scope="col">Kwota</th>
 											<th scope="col">Data</th>
@@ -101,16 +100,13 @@
 									<tbody>									
 											<?php
 												$incomeSum = 0;
-												$cardinalNumber = 1;
 
 												foreach ($_SESSION['incomes'] as $key => $value){
-													echo '<tr><th scope="row">'.$cardinalNumber.'.</th>';
-													echo'<td>'.$value['category'].'</td>';
-													echo '<td>'.$value['amount'].' zł</td>';
+													echo'<tr><td>'.$value['category'].'</td>';
+													echo '<td class="text-nowrap">'.number_format($value['amount'], 2, ',', ' ').' zł</td>';
 													echo '<td>'.date('d-m-Y', strtotime($value['date'])).'</td>';
 													echo '<td>'.$value['comment'].'</td>';
 													echo '</tr>';
-													$cardinalNumber++;
 													$incomeSum += $value['amount'];
 												}
 											?>
@@ -119,36 +115,17 @@
 							</div>
 							
 							<div class="row pb-5">
-								<p class="h4 ml-auto mr-auto"><strong>Suma przychodów:</strong> <?php echo $incomeSum ?> zł</p>
+								<p class="h4 ml-auto mr-auto"><strong>Suma przychodów:</strong> <?php echo number_format($incomeSum, 2, ',', ' ') ?> zł</p>
 							</div>
+						</div>	
 							
-							<h2 class="text-center">Przychody wg kategorii</h2>
-							
-							<div class="table-responsive">
-								<table class="table table-sm table-bordered table-hover text-center">
-									<thead style="background-color: #9FFF87">
-										<tr>
-											<th scope="col">L.p.</th>
-											<th scope="col">Kategoria</th>
-											<th scope="col">Kwota</th>
-										</tr>
-									</thead>
-									
-									<tbody>									
-											
-									</tbody>
-								</table>
-							</div>
-						</div>
-						
 						<div class="col-lg-6">
 							<h2 class="text-center">Wydatki</h2>
 							
 							<div class="table-responsive">
-								<table class="table table-sm table-bordered text-center table-hover">
+								<table class="table table-sm table-bordered text-center table-hover small">
 									<tr>
 										<thead style="background-color: #9FFF87">
-											<th scope="col">L.p.</th>
 											<th scope="col">Kategoria</th>
 											<th scope="col">Kwota</th>
 											<th scope="col">Data</th>
@@ -159,16 +136,13 @@
 									<tbody>
 										<?php
 											$expenseSum = 0;
-											$cardinalNumber = 1;
 
 											foreach ($_SESSION['expenses'] as $key => $value){
-												echo '<tr><th scope="row">'.$cardinalNumber.'.</th>';
-												echo'<td>'.$value['category'].'</td>';
-												echo '<td>'.$value['amount'].' zł</td>';
+												echo'<tr><td>'.$value['category'].'</td>';
+												echo '<td class="text-nowrap">'.number_format($value['amount'], 2, ',', ' ').' zł</td>';
 												echo '<td>'.date('d-m-Y', strtotime($value['date'])).'</td>';
 												echo '<td>'.$value['comment'].'</td>';
 												echo '</tr>';
-												$cardinalNumber++;
 												$expenseSum += $value['amount'];
 												
 												$balance = $incomeSum - $expenseSum;
@@ -179,25 +153,7 @@
 							</div>
 							
 							<div class="row pb-5">
-								<p class="h4 ml-auto mr-auto"><strong>Suma wydatków: </strong> <?php echo $expenseSum; ?> zł</p>
-							</div>
-							
-							<h2 class="text-center">Wydatki wg kategorii</h2>
-							
-							<div class="table-responsive">
-								<table class="table table-sm table-bordered table-hover text-center">
-									<thead style="background-color: #9FFF87">
-										<tr>
-											<th scope="col">L.p.</th>
-											<th scope="col">Kategoria</th>
-											<th scope="col">Kwota</th>
-										</tr>
-									</thead>
-									
-									<tbody>									
-											
-									</tbody>
-								</table>
+								<p class="h4 ml-auto mr-auto"><strong>Suma wydatków: </strong> <?php echo number_format($expenseSum, 2, ',', ' '); ?> zł</p>
 							</div>
 						</div>
 					</div>
@@ -206,6 +162,7 @@
 						<p class="h3 mx-auto"><strong>Saldo:</strong> 
 							<?php 
 								$balance = $incomeSum - $expenseSum;
+								$balance = number_format($balance, 2, ',', ' ');
 								
 								if ($balance >=0)
 									echo '<span class="text-success">'.$balance.' zł</span>';
@@ -215,13 +172,73 @@
 						</p>
 					</div>
 					
-					<div class="row mb-5">
+					<div class="row mb-5 pb-0">
 						<?php
 							if ($balance >=0)
 								echo '<p class="mx-auto h4">Gratulacje! Świetnie zarządzasz finansami!</p>';
 							else
 								echo '<p class="mx-auto h4">Uważaj! Popadasz w długi!</p>';
 						?>
+					</div>
+					
+					<div class="row my-5">
+						<div class="col-lg-6 mb-5">
+							<h2 class="text-center">Przychody wg kategorii</h2>
+							
+							<div class="table-responsive">
+								<table class="table table-sm table-bordered table-hover text-center small">
+									<thead style="background-color: #9FFF87">
+										<tr>
+											<th scope="col">Kategoria</th>
+											<th scope="col">Kwota</th>
+										</tr>
+									</thead>
+									
+									<tbody>									
+										<?php
+											foreach ($_SESSION['icomeCategories'] as $key => $value){
+												echo'<tr><td>'.$value['category'].'</td>';
+												echo '<td>'.number_format($value['ROUND(SUM(amount), 2)'], 2, ',', ' ').' zł</td>';
+												echo '</tr>';
+											}
+										?>	
+									</tbody>
+								</table>
+							</div>
+						</div>
+						
+						<div class="col-lg-6">
+							<h2 class="text-center">Wydatki wg kategorii</h2>
+							
+							<div class="table-responsive">
+								<table class="table table-sm table-bordered table-hover text-center small">
+									<thead style="background-color: #9FFF87">
+										<tr>
+											<th scope="col">Kategoria</th>
+											<th scope="col">Kwota</th>
+										</tr>
+									</thead>
+									
+									<tbody>									
+										<?php
+											foreach ($_SESSION['expenseCategories'] as $key => $value){
+												echo'<tr><td>'.$value['category'].'</td>';
+												echo '<td>'.number_format($value['ROUND(SUM(amount), 2)'], 2, ',', ' ').' zł</td>';
+												echo '</tr>';
+											}
+											
+											unset ($_SESSION['firstDate']);
+											unset ($_SESSION['lastDate']);
+											unset ($_SESSION['incomes']);
+											unset ($_SESSION['expenses']);
+											unset ($_SESSION['icomeCategories']);
+											unset ($_SESSION['expenseCategories']);
+											unset ($_SESSION['balanceToShow']);
+										?>	
+									</tbody>
+								</table>
+							</div>
+						</div>
 					</div>
 				</article>
 			</div>
