@@ -145,10 +145,11 @@
 										
 										<select class="custom-select inputs" id="paymentOptions" name="category" required>
 											<option selected disabled value="">Wybierz kategorię przychodu</option>
-											<option>Wynagrodzenie</option>
-											<option>Odsetki bankowe</option>
-											<option>Sprzedaż na Allegro</option>
-											<option>Inne</option>
+											<?php
+												foreach ($_SESSION['LoggedUserIncomeCategories'] as $value) {
+													echo "<option>{$value['name']}</option>";
+												}
+											?>
 										</select>
 									</div>
 									

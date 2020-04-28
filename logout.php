@@ -8,6 +8,9 @@
 	unset($_SESSION['loggedUserId']);
 	unset($_SESSION['loggedUserName']);
 	unset($_SESSION['LoggedUserEmail']);
+	unset($_SESSION['LoggedUserIncomeCategories']);
+	unset($_SESSION['LoggedUserExpenseCategories']);
+	unset($_SESSION['LoggedUserPaymentMethods']);
 ?>
 
 <!DOCTYPE html>

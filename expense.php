@@ -146,10 +146,11 @@
 										
 										<select class="custom-select inputs" id="paymentOptions" name="payment" required>
 											<option selected disabled value="">Wybierz sposób płatności</option>
-											<option>Gotówka</option>
-											<option>Przelew</option>
-											<option>Karta kredytowa</option>
-											<option>Karta debetowa</option>
+											<?php
+												foreach ($_SESSION['LoggedUserPaymentMethods'] as $value) {
+													echo "<option>{$value['name']}</option>";
+												}
+											?>
 										</select>
 									</div>
 								
@@ -162,23 +163,11 @@
 										
 										<select class="custom-select inputs" id="category" name="category" required>
 											<option selected disabled value="">Wybierz kategorię wydatku</option>
-											<option>Jedzenie</option>
-											<option>Mieszkanie</option>
-											<option>Transport</option>
-											<option>Telekomunikacja</option>
-											<option>Opieka zdrowotna</option>
-											<option>Ubranie</option>
-											<option>Higiena</option>
-											<option>Dzieci</option>
-											<option>Rozrywka</option>
-											<option>Wycieczka</option>
-											<option>Szkolenia</option>
-											<option>Książki</option>
-											<option>Oszczędności</option>
-											<option>Na złotą jesień, czyli emeryturę</option>
-											<option>Spłata długów</option>
-											<option>Darowizna</option>
-											<option>Inne wydatki</option>
+											<?php
+												foreach ($_SESSION['LoggedUserExpenseCategories'] as $value) {
+													echo "<option>{$value['name']}</option>";
+												}
+											?>
 										</select>
 									</div>
 									

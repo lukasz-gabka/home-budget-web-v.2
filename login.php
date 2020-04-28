@@ -20,9 +20,20 @@
 				$user = $userQuery->fetch();
 				
 				if (password_verify($password, $user['password'])) {
+					$incomeCategoriesQuery = $connection->query("SELECT name FROM incomeCategories WHERE userId = {$user['id']}");
+					$expenseCategoriesQuery = $connection->query("SELECT name FROM expenseCategories WHERE userId = {$user['id']}");
+					$paymentMethodsQuery = $connection->query("SELECT name FROM paymentMethods WHERE userId = {$user['id']}");
+					
+					$incomeCategoriesQuery = $incomeCategoriesQuery->fetchAll();
+					$expenseCategoriesQuery = $expenseCategoriesQuery->fetchAll();
+					$paymentMethodsQuery = $paymentMethodsQuery->fetchAll();
+					
 					$_SESSION['loggedUserId'] = $user['id'];
 					$_SESSION['LoggedUserName'] = $user['name'];
 					$_SESSION['LoggedUserEmail'] = $email;
+					$_SESSION['LoggedUserIncomeCategories'] = $incomeCategoriesQuery;
+					$_SESSION['LoggedUserExpenseCategories'] = $expenseCategoriesQuery;
+					$_SESSION['LoggedUserPaymentMethods'] = $paymentMethodsQuery;
 					header('Location: main.php');
 				}
 				else {

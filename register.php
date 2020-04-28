@@ -58,6 +58,7 @@
 			
 			//check if email exists
 			$statement = $connection->query("SELECT id FROM users WHERE email='$email'");
+
 			if ($statement->rowCount()) {
 				$isDataCorrect = false;
 				$_SESSION['emailError'] = "Podany e-mail jest już zarejestrowany";
@@ -65,10 +66,36 @@
 			
 			//add new user to database
 			if ($isDataCorrect == true){
-				if ($connection->query("INSERT INTO users VALUES (NULL, '$name', '$email', '$passwordHashed')"));
+				$connection->query("INSERT INTO users VALUES (NULL, '$name', '$email', '$passwordHashed')");
+				
+				//add default categories
+				$defaultIncomeCategories = $connection->query("SELECT name FROM incomeCategoriesDefault");
+				$defaultExpenseCategories = $connection->query("SELECT name FROM expenseCategoriesDefault");
+				$defaultPaymentMethods = $connection->query("SELECT name FROM paymentMethodsDefault");
+				
+				$defaultIncomeCategories = $defaultIncomeCategories->fetchAll();
+				$defaultExpenseCategories = $defaultExpenseCategories->fetchAll();
+				$defaultPaymentMethods = $defaultPaymentMethods->fetchAll();
+				
+				$userId = $connection->query("SELECT id FROM users WHERE email='$email'");
+				$userId = $userId->fetch();
+				
+				foreach ($defaultIncomeCategories as $value){
+					$connection->query("INSERT INTO incomeCategories VALUES (NULL, {$userId["id"]}, '{$value['name']}')");
+				}
+				
+				foreach ($defaultExpenseCategories as $value){
+					$connection->query("INSERT INTO expenseCategories VALUES (NULL, {$userId["id"]}, '{$value['name']}')");
+				}
+				
+				foreach ($defaultPaymentMethods as $value){
+					$connection->query("INSERT INTO paymentMethods VALUES (NULL, {$userId["id"]}, '{$value['name']}')");
+				}
+				
 				$_SESSION['correctRegistration'] = true;
 				header('Location: registered.php');
 			}
+			
 		}
 		catch (PDOException $error){
 			//echo $error->getMessage();
