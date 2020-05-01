@@ -38,6 +38,22 @@ body
 	font-weight: 700;
 }
 
+.dropdown-menu
+{
+	border: none;
+}
+
+.dropdown-item
+{
+	color: rgba(255,255,255,.5) !important;
+}
+
+.dropdown-item:hover
+{
+	background-color: inherit;
+	color: rgba(255,255,255,.75) !important;
+}
+
 .row
 {
 	padding-bottom: 92px;
