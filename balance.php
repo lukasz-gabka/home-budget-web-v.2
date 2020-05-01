@@ -133,7 +133,7 @@
 							
 							<div class="table-responsive">
 								<table class="table table-sm table-bordered table-hover text-center small">
-									<thead style="background-color: #9FFF87">
+									<thead>
 										<tr>
 											<th scope="col">Kategoria</th>
 											<th scope="col">Kwota</th>
@@ -170,7 +170,7 @@
 							<div class="table-responsive">
 								<table class="table table-sm table-bordered text-center table-hover small">
 									<tr>
-										<thead style="background-color: #9FFF87">
+										<thead>
 											<th scope="col">Kategoria</th>
 											<th scope="col">Kwota</th>
 											<th scope="col">Data</th>
@@ -232,7 +232,7 @@
 							
 							<div class="table-responsive">
 								<table class="table table-sm table-bordered table-hover text-center small">
-									<thead style="background-color: #9FFF87">
+									<thead>
 										<tr>
 											<th scope="col">Kategoria</th>
 											<th scope="col">Kwota</th>
@@ -257,7 +257,7 @@
 							
 							<div class="table-responsive">
 								<table class="table table-sm table-bordered table-hover text-center small">
-									<thead style="background-color: #9FFF87">
+									<thead>
 										<tr>
 											<th scope="col">Kategoria</th>
 											<th scope="col">Kwota</th>

@@ -131,6 +131,21 @@ textarea
 	max-width: 150px !important;
 }
 
+table, th, td
+{
+	border-color: #005700 !important;
+}
+
+thead
+{
+	background-color: #00ac55;
+}
+
+tbody
+{
+	background-color: #e8ead6;
+}
+
 .close
 {
 	text-shadow: none;
