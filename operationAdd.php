@@ -30,10 +30,9 @@
 	</head>
 	
 	<body>
-		
 		<nav class="navbar navbar-dark navbar-expand-md navigation pb-0">
 			<header>
-				<a class="navbar-brand mr-5" href="main.php">
+				<a class="navbar-brand mr-1" href="main.php">
 					<img src="img/piggy.png" height="60" alt="logo"><p class="align-middle"><span class="yellow">e</span>-świnka</p>
 				</a>
 			</header>
@@ -106,10 +105,8 @@
 						</div>
 					
 						<div class="col-md-8">
-						
 							<p class="text-center">Twój <?php echo $operation; ?> został dodany poprawnie</p>
 						</div>
-						
 					</div>
 				</article>		
 			</div>
@@ -133,32 +130,32 @@
 					<form method="post" action="balanceCustom.php">
 						<div class="modal-body">
 							
-								<div class="input-group justify-content-center my-5">
-									<div class="input-group-prepend">
-										<span class="input-group-text inputsPrepend">
-											<i class="icon-calendar"></i>
-										</span>
-									</div>
-									
-									<input placeholder="Data początkowa(kliknij, aby ustawić)" class="textbox-n form-control inputs" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date1" name="firstDate" required>
+							<div class="input-group justify-content-center my-5">
+								<div class="input-group-prepend">
+									<span class="input-group-text inputsPrepend">
+										<i class="icon-calendar"></i>
+									</span>
 								</div>
 								
-								<div class="input-group justify-content-center">
-									<div class="input-group-prepend">
-										<span class="input-group-text inputsPrepend">
-											<i class="icon-calendar"></i>
-										</span>
-									</div>
-									
-									<input placeholder="Data końcowa(kliknij, aby ustawić)" class="textbox-n form-control inputs" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date2" name="lastDate"required>
+								<input placeholder="Data początkowa(kliknij, aby ustawić)" class="textbox-n form-control inputs" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date1" name="firstDate" required>
+							</div>
+							
+							<div class="input-group justify-content-center">
+								<div class="input-group-prepend">
+									<span class="input-group-text inputsPrepend">
+										<i class="icon-calendar"></i>
+									</span>
 								</div>
 								
-								<?php
-									if (isset($_SESSION['balanceError'])){
-										echo '<div class="input-group justify-content-center text-danger small">'.$_SESSION['balanceError'].'</div>';
-										unset($_SESSION['balanceError']);
-									}
-								?>
+								<input placeholder="Data końcowa(kliknij, aby ustawić)" class="textbox-n form-control inputs" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date2" name="lastDate"required>
+							</div>
+							
+							<?php
+								if (isset($_SESSION['balanceError'])){
+									echo '<div class="input-group justify-content-center text-danger small">'.$_SESSION['balanceError'].'</div>';
+									unset($_SESSION['balanceError']);
+								}
+							?>
 						</div>
 						
 						<div class="modal-footer mt-5">

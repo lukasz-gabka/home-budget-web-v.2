@@ -34,10 +34,9 @@
 	</head>
 	
 	<body>
-		
 		<nav class="navbar navbar-dark navbar-expand-sm navigation">
 			<header>
-				<a class="navbar-brand mr-5" href="index.php">
+				<a class="navbar-brand mr-1" href="index.php">
 					<img src="img/piggy.png" height="60" alt="logo"><p class="align-middle"><span class="yellow">e</span>-świnka</p>
 				</a>
 			</header>
@@ -72,13 +71,10 @@
 						</div>
 					
 						<div class="col-md-8">
-						
 							<p class="text-center">Teraz możesz się zalogować i w pełni korzystać z serwisu</p>
 						</div>
-						
 					</div>
 				</article>
-				
 			</div>
 		</main>
 		
