@@ -121,9 +121,8 @@
 			<div class="container-fluid mt-5">
 				<article>
 					<header>
-						<h1 class="text-center">Bilans za okres: 
-							<?php echo $firstDateReversed." - ".$lastDateReversed ?>
-						</h1>
+						<h1 class="text-center">Bilans za okres</h1>
+						<h1 class="text-center dateRange"><strong><?php echo $firstDateReversed." - ".$lastDateReversed ?></strong></h1>
 					</header>
 					
 					<div class="row mt-5 pb-0">

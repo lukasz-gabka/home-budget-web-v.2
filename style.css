@@ -54,6 +54,22 @@ body
 	color: rgba(255,255,255,.75) !important;
 }
 
+@media (min-width: 401px) and (max-width: 500px)
+{
+	.dateRange
+	{
+		font-size: 32px;
+	}
+}
+
+@media (max-width: 400px)
+{
+	.dateRange
+	{
+		font-size: 26px;
+	}
+}
+
 .row
 {
 	padding-bottom: 92px;
